@@ -12,7 +12,10 @@ COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
+COPY logging_setup.py logging_setup.py
+COPY logging.yaml logging.yaml
 COPY spider.py spider.py
+COPY data/ data/
 
 # switch to a non-root user for security.
 RUN useradd jay

@@ -18,6 +18,7 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+      - START_XVFB=true
     networks:
       - acas-grid
 
@@ -30,19 +31,35 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+      - START_XVFB=true
     networks:
       - acas-grid
 
-  app:
-    build: .
+  chrome-debug:
+    image: selenium/node-chrome-debug:3.141.59-20200409
+    volumes:
+      - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
-      - firefox
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - START_XVFB=true
+    ports:
+      - "5900:5900"
+    networks:
+      - acas-grid
+
+  eb-spider:
+    build: ./eb
+    depends_on:
       - chrome
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
       - BROWSER=chrome
+    volumes:
+      - ./eb/screenshots:/code/screenshots
     networks:
       - acas-grid
 
