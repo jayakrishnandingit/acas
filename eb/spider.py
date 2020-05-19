@@ -15,7 +15,7 @@ HUB_HOST = os.environ.get('HUB_HOST')
 HUB_PORT = os.environ.get('HUB_PORT')
 BROWSER_NAME = os.environ.get('BROWSER')
 EB_HOME_URL = 'https://www.eventbrite.com/'
-LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger('spider')
 
 
 def wait_and_find_element(driver, attribute, selector):
@@ -150,6 +150,7 @@ def event_finder(name, location, event_date=None):
         search_element.send_keys(name.capitalize())
         LOGGER.debug("Starting search by pressing enter key.")
         search_element.send_keys(Keys.RETURN)
+        time.sleep(10)
         LOGGER.info(f"Title of the search page is {driver.title}.")
         assert name.capitalize() in driver.title
         assert location.capitalize() in driver.title

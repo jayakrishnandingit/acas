@@ -10,7 +10,7 @@ handlers:
         formatter: simple
         stream: ext://sys.stdout
 loggers:
-    __main__:
+    spider:
         level: INFO
         handlers: [console]
         propagate: yes
