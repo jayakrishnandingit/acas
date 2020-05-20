@@ -2,8 +2,8 @@ import os
 import logging
 import time
 
-from logging_setup import setup_logging
-setup_logging()
+from py_logging_setup import setup_logging
+setup_logging(config_env_key='LOGGING_CONFIG_YAML')
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys

@@ -8,11 +8,11 @@ RUN pip install --upgrade pip
 
 WORKDIR /code/
 
+COPY py_logging_setup/ py_logging_setup/
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY logging_setup.py logging_setup.py
 COPY logging.yaml logging.yaml
 COPY __init__.py __init__.py
 COPY spider.py spider.py

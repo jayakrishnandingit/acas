@@ -1,2 +1,2 @@
-pyyaml==5.3.1
+-r py_logging_setup/requirements.txt
 selenium==3.141.0

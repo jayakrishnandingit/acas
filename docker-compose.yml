@@ -58,6 +58,7 @@ services:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
       - BROWSER=chrome
+      - LOGGING_CONFIG_YAML=./logging.yaml
     volumes:
       - ./eb/screenshots:/code/screenshots
     networks:
